@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+from sklearn.metrics import accuracy_score
 X = np.array([1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5]).reshape(-1,1)
 y = np.array([0, 0, 0, 0, 1, 1, 1, 1, 1]).reshape(-1,1)
 X_b = np.c_[np.ones(9),X]
@@ -45,7 +45,11 @@ def predictor(z):
     a = sigmoid(z)
     y_pred = (a>0.5).astype(int)
     return y_pred
-print(predictor(z))
+y_hat = predictor(z)
+accuracy = accuracy_score(y,y_hat)
+print(accuracy)
+print(y_hat)
+print(y)
 plt.subplot(1,2,1)
 plt.plot(X.ravel(),sigmoid(z),color='red')
 plt.title('The sigmoid function')
