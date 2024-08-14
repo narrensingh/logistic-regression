@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.metrics import classification_report
 from sklearn.metrics import accuracy_score
 X = np.array([1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5]).reshape(-1,1)
 y = np.array([0, 0, 0, 0, 1, 1, 1, 1, 1]).reshape(-1,1)
@@ -47,6 +48,8 @@ def predictor(z):
     return y_pred
 y_hat = predictor(z)
 accuracy = accuracy_score(y,y_hat)
+report = classification_report(y,y_hat)
+print(report)
 print(accuracy)
 print(y_hat)
 print(y)
